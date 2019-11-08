@@ -1,5 +1,8 @@
 # vue-ol-webgl-wind
 
+[wind-layer](https://github.com/gberaudo/olwind)
+[ol-webgl-wind](https://github.com/sakitam-fdd/wind-layer)
+
 ## Project setup
 ```
 npm install

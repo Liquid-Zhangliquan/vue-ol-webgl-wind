@@ -52,8 +52,8 @@ export class CanvasWindParticlesLayer extends CustomCanvasLayer {
 
   render(frameState, context) {
     const canvas = context.canvas
-    if (context.fillStyle != 'dimgray') {
-      context.fillStyle = 'dimgray'
+    if (context.fillStyle != '#3385ff') {
+      context.fillStyle = '#3385ff'
     }
 
     this.advanceParticles(frameState, context)

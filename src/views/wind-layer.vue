@@ -9,7 +9,8 @@ import View from 'ol/View.js';
 import TileLayer from 'ol/layer/Tile.js';
 import OSM from 'ol/source/OSM';
 import Projection from 'ol/proj/Projection';
-import OlWind from 'wind-layer/dist/OlWindy';
+// import OlWind from 'wind-layer/dist/OlWindy';
+import OlWind from '../lib/wind-layer';
 
 export default {
   name: 'wind-layer',
@@ -52,13 +53,13 @@ export default {
         ratio: 1,
         map: map,
         colorScale: [
-          'rgb(36,104, 180)',
-          'rgb(60,157, 194)',
-          'rgb(128,205,193 )',
-          'rgb(151,218,168 )',
-          'rgb(198,231,181)',
-          'rgb(238,247,217)',
-          'rgb(255,238,159)',
+          // 'rgb(36,104, 180)',
+          // 'rgb(60,157, 194)',
+          // 'rgb(128,205,193 )',
+          // 'rgb(151,218,168 )',
+          // 'rgb(198,231,181)',
+          // 'rgb(238,247,217)',
+          // 'rgb(255,238,159)',
           'rgb(252,217,125)',
           'rgb(255,182,100)',
           'rgb(252,150,75)',

@@ -1,11 +1,7 @@
 # vue-ol-webgl-wind
 
-[ol-webgl-wind](https://github.com/gberaudo/olwind)
-[wind-layer](https://github.com/sakitam-fdd/wind-layer)
-
-## live-demo
-[ol-webgl-wind](http://Liquid-Zhangliquan.github.io/vue-ol-webgl-wind)
-[wind-layer](http://Liquid-Zhangliquan.github.io/vue-ol-webgl-wind/wind-layer)
+* [ol-webgl-wind](https://github.com/gberaudo/olwind)
+* [wind-layer](https://github.com/sakitam-fdd/wind-layer)
 
 ## Project setup
 ```

@@ -7,7 +7,7 @@ import 'ol/ol.css';
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import TileLayer from 'ol/layer/Tile.js';
-import OSM from 'ol/source/OSM';
+import XYZ from 'ol/source/XYZ'
 import Projection from 'ol/proj/Projection';
 // import OlWind from 'wind-layer/dist/OlWindy';
 import OlWind from '../lib/wind-layer';
@@ -20,22 +20,25 @@ export default {
   },
   methods: {
     mapInit() {
-      const layers = [
-        new TileLayer({
-          source: new OSM()
-        })
-      ];
-
-      const map = new Map({
-        layers: layers,
-        target: 'olmap',
-        view: new View({
-          // center: new transform([115.79, 36.142],'EPSG:4326' ,'EPSG:3857'),
-          center: [115.79, 36.142],
-          projection: 'EPSG:4326',
-          zoom: 8
+      const layers = new TileLayer({
+        title: '午夜蓝图',
+        source: new XYZ({
+          url: 'http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}'
         })
       });
+
+      const map = new Map({
+        layers: [layers],
+        target: 'olmap',
+        view: new View({
+          center: [108.62957031250004, 36.510877929687524],
+          projection: 'EPSG:4326',
+          zoom: 5
+        })
+      });
+      map.on('click', (evt) => {
+        console.log(evt)
+      })
       fetch('/data/gfs.json').then(response => {
         response.json().then(res => {
           const data = res['2019110814'];
@@ -48,7 +51,7 @@ export default {
     windLayerInit(map, data) {
       const wind = new OlWind(data, {
         layerName: 'data',
-        projection:'EPSG:4326',
+        projection: 'EPSG:4326',
         // projection: new Projection({ code: 'EPSG:4326',units:'degrees',worldExtent:[-180, -90, 180, 90],metersPerUnit:111319.49079327358 }),
         ratio: 1,
         map: map,

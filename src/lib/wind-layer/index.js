@@ -2,6 +2,7 @@ import Windy from './windy'
 import { createCanvas, getDirection, getSpeed } from './helper'
 import { Image } from 'ol/layer'
 import { ImageCanvas } from 'ol/source'
+import { transformExtent } from 'ol/proj'
 import Map from 'ol/Map'
 class OlWind extends Image {
   constructor(data, options = {}) {
@@ -161,7 +162,7 @@ class OlWind extends Image {
     const _extent = this._getMapExtent()
     if (size && _extent) {
       const _projection = this._getProjectionCode()
-      const extent = ol.proj.transformExtent(_extent, _projection, 'EPSG:4326')
+      const extent = new transformExtent(_extent, _projection, 'EPSG:4326')
       return [[[0, 0], [size[0], size[1]]], size[0], size[1], [[extent[0], extent[1]], [extent[2], extent[3]]]]
     } else {
       return false
@@ -278,7 +279,6 @@ class OlWind extends Image {
     } else {
       code = 'EPSG:4326'
     }
-    console.log(code)
     return code
   }
 

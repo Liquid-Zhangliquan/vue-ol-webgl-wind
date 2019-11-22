@@ -7,8 +7,7 @@ import 'ol/ol.css';
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import TileLayer from 'ol/layer/Tile.js';
-import OSM from 'ol/source/OSM';
-import { transform } from 'ol/proj';
+import XYZ from 'ol/source/XYZ'
 
 import UVBuffer from '../lib/ol-webgl-wind/UVBuffer';
 import { CanvasWindParticlesLayer } from '../lib/ol-webgl-wind/CanvasWindParticlesLayer';
@@ -21,20 +20,20 @@ export default {
   },
   methods: {
     mapInit() {
-      const layers = [
-        new TileLayer({
-          source: new OSM()
+      const layers = new TileLayer({
+        title: '午夜蓝图',
+        source: new XYZ({
+          url: 'http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}'
         })
-      ];
+      });
 
       const map = new Map({
-        layers: layers,
+        layers: [layers],
         target: 'olmap',
         view: new View({
-          // center: new transform([115.79, 36.142],'EPSG:4326' ,'EPSG:3857'),
-          center: [115.79, 36.142],
+          center: [108.62957031250004, 36.510877929687524],
           projection: 'EPSG:4326',
-          zoom: 8
+          zoom: 5
         })
       });
       fetch('/data/gfs.json').then(response => {
